@@ -11,5 +11,7 @@ setup(
     author_email="sukh2010@yahoo.com",
     entry_points={
         'console_scripts': ['countdown = countdowntime:main',],
-    }
+    },
+    install_requires=["pywin32 >= 1.0;platform_system=='Windows'"],
+
 )
