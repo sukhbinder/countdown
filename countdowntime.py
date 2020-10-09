@@ -5,9 +5,9 @@ from multiprocessing import Process
 import os
 
 
-def announce(msg, sleepseconds=0.0):
+def announce(msg, sleepseconds=0.0, daemon=True):
     process = Process(target=announce_inner,
-                      args=(msg, sleepseconds,), daemon=True)
+                      args=(msg, sleepseconds,), daemon=daemon)
     process.start()
 
 
@@ -45,8 +45,9 @@ def countdown(t, sayit):
             msg = "{} mins remaining.".format(mins)
             announce(msg)
         t -= 1
+    announce("Times up buddy!", daemon=False)
     print('Done!\n\a\a\a\a\a')
-    announce("Times up buddy!")
+
 
 
 def main():
