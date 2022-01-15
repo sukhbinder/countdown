@@ -3,11 +3,17 @@ import time
 import argparse
 from multiprocessing import Process
 import os
+from random import choice
 
+
+MSGS = ["Hurry Up Buddy", "You slow snail, get going", "Aim to finish on time", "Hurry up mate, pace it up",
+        "Lazy cow, hurry up", "Good going, keep the pace", "You are doing good, keep focus", "You are on track",
+        "Steady, keep working"]
 
 def announce(msg, sleepseconds=0.0, daemon=True):
+    say_msg = "{} {}".format(choice(MSGS), msg)
     process = Process(target=announce_inner,
-                      args=(msg, sleepseconds,), daemon=daemon)
+                      args=(say_msg, sleepseconds,), daemon=daemon)
     process.start()
 
 
